@@ -20,7 +20,52 @@ class HomePage extends StatelessWidget {
         title: Text("Awesome App"),
       ),
       body: Container(
-        child: Text('Hi Flutter'),
+        color: Colors.black12,
+        height: 200,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.red,
+              child: Text(
+                "I am a box",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                ),
+              ),
+              alignment: Alignment.center,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.brown,
+              child: Text(
+                "I am a box",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                ),
+              ),
+              alignment: Alignment.center,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.green,
+              child: Text(
+                "I am a box",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                ),
+              ),
+              alignment: Alignment.center,
+            )
+          ],
+        ),
       ),
     );
   }
