@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:second_tutorial/drawer.dart';
-import 'package:second_tutorial/name_card_widget.dart';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -12,6 +14,21 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var myText = "Change My Name";
   TextEditingController _nameController = TextEditingController();
+  var url = 'https://jsonplaceholder.typicode.com/photos';
+  var data;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  fetchData() async {
+    var res = await http.get(Uri.parse(url));
+    data = jsonDecode(res.body);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,14 +36,22 @@ class _HomePageState extends State<HomePage> {
           title: Text("Awesome App"),
         ),
         drawer: MyDrawer(),
-        body: Center(
-            child: Padding(
-          padding: const EdgeInsets.all(3),
-          child: SingleChildScrollView(
-            child:
-                NameCardWidget(myText: myText, nameController: _nameController),
-          ),
-        )),
+        body: data != null
+            ? ListView.builder(
+                itemBuilder: (context, index) {
+                  return Card(
+                    child: ListTile(
+                      title: Text(data[index]['title']),
+                      subtitle: Text("ID: ${data[index]['id']}"),
+                      leading: Image.network(data[index]['url']),
+                    ),
+                  );
+                },
+                itemCount: data.length,
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             myText = _nameController.text;
@@ -36,6 +61,6 @@ class _HomePageState extends State<HomePage> {
           },
           child: Icon(Icons.send),
         ),
-        backgroundColor: Colors.grey[600]);
+        backgroundColor: Colors.grey[200]);
   }
 }
