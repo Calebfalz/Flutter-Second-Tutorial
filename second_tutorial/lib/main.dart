@@ -19,53 +19,44 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: Container(
-        color: Colors.black12,
-        height: 200,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.all(0),
           children: [
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.red,
-              child: Text(
-                "I am a box",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 22,
-                ),
-              ),
-              alignment: Alignment.center,
+            UserAccountsDrawerHeader(
+              accountName: Text("Mr Cassiel"),
+              accountEmail: Text("faleyecassiel005@gmail.com"),
             ),
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.brown,
-              child: Text(
-                "I am a box",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 22,
-                ),
-              ),
-              alignment: Alignment.center,
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Mr Caleb'),
+              subtitle: Text("Developer"),
+              trailing: Icon(Icons.edit),
             ),
-            Container(
-              width: 100,
-              height: 100,
-              color: Colors.green,
-              child: Text(
-                "I am a box",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 22,
-                ),
-              ),
-              alignment: Alignment.center,
-            )
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text('Email'),
+              subtitle: Text("faleyecassiel@gmail.com"),
+              trailing: Icon(Icons.edit),
+            ),
+            ListTile(
+              leading: Icon(Icons.confirmation_number),
+              title: Text('Phone Number'),
+              subtitle: Text("234549393"),
+              trailing: Icon(Icons.edit),
+            ),
           ],
         ),
+      ),
+      body: Center(
+        child: Container(
+          color: Colors.black12,
+          height: 200,
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.edit),
       ),
     );
   }
