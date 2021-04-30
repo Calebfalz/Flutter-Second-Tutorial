@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                                       context, HomePage.routeName);
                                 },
                                 child: Text("Sign In"),
-                                color: Colors.orange,
+                                color: Colors.blue.shade300,
                                 textColor: Colors.white,
                               ),
                             ],
