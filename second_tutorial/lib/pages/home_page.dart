@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
+  static const String routeName = "/home";
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -33,6 +34,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
           title: Text("Awesome App"),
         ),
         drawer: MyDrawer(),
